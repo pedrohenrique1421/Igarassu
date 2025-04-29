@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@75..125,300..700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+:root {
+  --color-green-300: #41a076;
+
+  --color-white-300: #fdfdfd;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+button {
+  border-radius: 15px;
+  padding: 1.25rem 1.5rem;
+  border: none;
+  outline: none;
+  background: var(--color-green-300);
+  width: fit-content;
+  cursor: pointer;
+}
+
+button h6 {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 1rem;
+  color: var(--color-white-300);
+}

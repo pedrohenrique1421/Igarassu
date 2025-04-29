@@ -1,0 +1,17 @@
+.Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 5rem;
+}
+
+.Container button {
+  width: fit-content;
+  height: fit-content;
+}
+
+.Container img {
+  height: 5.5rem;
+}

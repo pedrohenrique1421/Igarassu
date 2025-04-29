@@ -1,0 +1,21 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 calc(13% / 2);
+    gap: 2rem;
+
+    background: wheat;
+}
+
+.Container .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.Container .content .box {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
