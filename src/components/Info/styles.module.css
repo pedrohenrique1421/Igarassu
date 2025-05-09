@@ -2,20 +2,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 calc(13% / 2);
+    padding: 2rem calc(13% / 2) 4rem;
     gap: 2rem;
-
-    background: wheat;
 }
 
 .Container .content {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
+    width: 85%;
 }
 
 .Container .content .box {
     display: flex;
-    gap: 1rem;
+    max-width: 17rem;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.Container .content .box img {
+    height: 80px;
+    width: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.Container .content .box h1 {
+    font-size: 1.75rem;
 }

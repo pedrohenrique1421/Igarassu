@@ -23,14 +23,14 @@ export default function Info() {
                 {/* Box 2 */}
                 <div className={styles.box}>
                     <img src={Img2} alt="" />
-                    <h1>Auxilio funeral</h1>
-                    <p>apoio para famílias enlutadas</p>
+                    <h1>Cestas básicas</h1>
+                    <p>segurança alimentar para quem mais precisa</p>
                 </div>
                 {/* Box 3 */}
                 <div className={styles.box}>
                     <img src={Img3} alt="" />
-                    <h1>Auxilio funeral</h1>
-                    <p>apoio para famílias enlutadas</p>
+                    <h1>Outros benefícios</h1>
+                    <p>serviços diversificados</p>
                 </div>
             </div>
             {/* --------------------- Section 2 -------------------------------- */}
@@ -39,20 +39,20 @@ export default function Info() {
                 {/* Box 1 */}
                 <div className={styles.box}>
                     <img src={Img4} alt="" />
-                    <h1>Auxilio funeral</h1>
-                    <p>apoio para famílias enlutadas</p>
+                    <h1>Cadastre-se</h1>
+                    <p>no portal</p>
                 </div>
                 {/* Box 2 */}
                 <div className={styles.box}>
                     <img src={Img5} alt="" />
-                    <h1>Auxilio funeral</h1>
-                    <p>apoio para famílias enlutadas</p>
+                    <h1>Escolha o benefício</h1>
+                    <p>e envie os documentos</p>
                 </div>
                 {/* Box 3 */}
                 <div className={styles.box}>
                     <img src={Img6} alt="" />
-                    <h1>Auxilio funeral</h1>
-                    <p>apoio para famílias enlutadas</p>
+                    <h1>Acompanhe sua</h1>
+                    <p>solicitação pelo site</p>
                 </div>
             </div>
         </div>
