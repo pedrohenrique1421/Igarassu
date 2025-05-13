@@ -1,18 +1,15 @@
-import Header from "./components/Header/index.jsx";
-import Hero from "./components/Hero/index.jsx";
-import Info from "./components/Info/index.jsx";
-import Login from "./components/Login/index.jsx";
-import Footer from "./components/Footer/index.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Forms from "./pages/Forms";
 
 function App() {
     return (
-        <>
-            <Header />
-            <Hero />
-            <Info />
-            <Login />
-            <Footer />
-        </>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/form" element={<Forms />} />
+            </Routes>
+        </Router>
     );
 }
 
