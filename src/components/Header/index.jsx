@@ -12,7 +12,7 @@ export default function Header({ type }) {
         <div className={styles.Container}>
             <img src={Img} alt="" />
             {!type ? (
-                <NavLink to="/form">
+                <NavLink to="/form" style={{ textDecoration: "none" }}>
                     <button
                         onClick={() => {
                             HandleSetFormType("agendamento");

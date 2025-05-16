@@ -1,15 +1,58 @@
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { HandleLogin } from "../../manager";
 
 export default function Form({ type }) {
     switch (type) {
         case "agendamento":
             return <Agendamento />;
+        case "login":
+            return <Login />;
         default:
             return <ErrorPage />;
     }
 }
+
+//#region Login
+
+function Login() {
+    const [ajuda, setAjuda] = useState(false);
+
+    const HandleGetInfoLogin = () => {};
+    return (
+        <div className={styles.Container}>
+            {!ajuda ? (
+                <div className={styles.content}>
+                    <h1>Login</h1>
+                    <h6>Bem-Vindo de volta</h6>
+                    <div className={styles.line} />
+                    <input type="text" name="Email" placeholder="Email" />
+                    <input type="text" name="Senha" placeholder="Senha" />
+                    <input type="submit" value="Conecte-se" />
+                </div>
+            ) : (
+                <div className={styles.content}>
+                    <h1>Login</h1>
+                    <div className={styles.line} />
+                    <p>
+                        Se você é um Assistente Social cadastrado, faça login
+                        com seu email e senha.
+                    </p>
+                </div>
+            )}
+            <h2
+                onClick={() => {
+                    setAjuda(!ajuda);
+                }}
+            >
+                Precisa de ajuda?
+            </h2>
+        </div>
+    );
+}
+
+//#endregion
 
 //#region Agendamento
 function Agendamento() {
