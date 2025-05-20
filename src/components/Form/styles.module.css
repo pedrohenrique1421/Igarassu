@@ -48,7 +48,8 @@
     text-align: center;
 }
 
-.Container .content input[type="text"] {
+.Container .content input[type="email"],
+.Container .content input[type="password"] {
     background-color: var(--color-white-300);
     border: none;
     border-radius: 80px;

@@ -10,7 +10,13 @@ export default function Header({ type }) {
     const navigate = useNavigate();
     return (
         <div className={styles.Container}>
-            <img src={Img} alt="" />
+            <img
+                src={Img}
+                onClick={() => {
+                    navigate("/");
+                }}
+                alt=""
+            />
             {!type ? (
                 <NavLink to="/form" style={{ textDecoration: "none" }}>
                     <button

@@ -18,8 +18,19 @@ export default function Form({ type }) {
 
 function Login() {
     const [ajuda, setAjuda] = useState(false);
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const navigate = useNavigate();
 
-    const HandleGetInfoLogin = () => {};
+    const HandleChangeEmail = (event) => {
+        // Atualiza o valor da variavel email
+        setEmail(event.target.value);
+    };
+
+    const HandleChangeSenha = (event) => {
+        // Atualiza o valor da variavel senha
+        setSenha(event.target.value);
+    };
     return (
         <div className={styles.Container}>
             {!ajuda ? (
@@ -27,9 +38,28 @@ function Login() {
                     <h1>Login</h1>
                     <h6>Bem-Vindo de volta</h6>
                     <div className={styles.line} />
-                    <input type="text" name="Email" placeholder="Email" />
-                    <input type="text" name="Senha" placeholder="Senha" />
-                    <input type="submit" value="Conecte-se" />
+                    <input
+                        type="email"
+                        name="Email"
+                        value={email}
+                        onChange={HandleChangeEmail}
+                        placeholder="Email"
+                    />
+                    <input
+                        type="password"
+                        name="Senha"
+                        value={senha}
+                        onChange={HandleChangeSenha}
+                        placeholder="Senha"
+                    />
+                    <input
+                        type="submit"
+                        onClick={() => {
+                            HandleLogin(email, senha);
+                            navigate("/dashboard");
+                        }}
+                        value="Conecte-se"
+                    />
                 </div>
             ) : (
                 <div className={styles.content}>
