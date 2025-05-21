@@ -1,6 +1,7 @@
+import { Inertia } from "@inertiajs/inertia";
 import Global from "./global";
 
-const HandleSetFormType = (type) => { // tipos de form
+const HandleSetFormType = (type) => {
     switch (type) {
         case "agendamento":
             Global.formType = "agendamento";
@@ -27,11 +28,27 @@ const HandleGetFormType = () => {
     return Global.formType;
 };
 
-const HandleLogin = (email, senha, navigate) => {
-    // simular loguin bem sucedido
-    // adicionar lógica de autenticação real aqui dps:
-    console.log("Login simulado com:", email, senha);
-    navigate("/dashboard"); // Redirecionar pro dashboard
+const HandleLogin = (email, senha, navigate, setError) => {
+    Inertia.post(
+        "/login", // rota do backend pra lidar com o login
+        { email, senha }, // dados enviados que vão ser email e senha
+        {
+            onSuccess: (response) => {
+                // login foi bem-sucedido
+                console.log(
+                    "Login bem-sucedido! Beneficiários:",
+                    response.props.beneficiarios
+                );
+                navigate("/dashboard"); // redirecionando pro dashboard
+            },
+            onError: (errors) => {
+                // Se login falhou, exibir o erro retornado pelo back
+                setError(
+                    errors.email || "Credenciais inválidas. Tente novamente."
+                );
+            },
+        }
+    );
 };
 
 export { HandleSetFormType, HandleGetFormType, HandleLogin };

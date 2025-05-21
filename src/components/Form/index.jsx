@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { HandleLogin } from "../../manager";
 
-function LoginForm() {  // função de login
-    const [ajuda, setAjuda] = useState(false);
+function LoginForm() {
+    const [ajuda, setAjuda] = useState(false); // 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [error, setError] = useState("");
@@ -24,7 +24,7 @@ function LoginForm() {  // função de login
             return;
         }
         setError("");
-        HandleLogin(email, senha, navigate);
+        HandleLogin(email, senha, navigate, setError); // Passar o setError
     };
 
     return (
