@@ -1,10 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { createInertiaApp } from "@inertiajs/react";
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+createInertiaApp({
+    resolve: (name) =>
+        resolvePageComponent(
+            `./pages/${name}.jsx`,
+            import.meta.glob("./pages/**/*.jsx")
+        ),
+    setup({ el, App, props }) {
+        createRoot(el).render(<App {...props} />);
+    },
+});
