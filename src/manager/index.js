@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Global from "./global";
 
-const HandleSetFormType = (type) => {
+const HandleSetFormType = (type) => { // tipos de form
     switch (type) {
         case "agendamento":
             Global.formType = "agendamento";
@@ -15,9 +13,6 @@ const HandleSetFormType = (type) => {
             break;
         case "solicitacao":
             Global.formType = "solicitacao";
-            break;
-        case "cadSolicitante":
-            Global.formType = "cadSolicitante";
             break;
         case "entrega":
             Global.formType = "entrega";
@@ -32,10 +27,11 @@ const HandleGetFormType = () => {
     return Global.formType;
 };
 
-const HandleLogin = (email, senha) => {
-    // Aqui entra a função de login do back,
-    // que deve retornar se o user existe e as informações dele
-    // FUNÇÃO QUEBRADA para DESENVOLVIMENTO
+const HandleLogin = (email, senha, navigate) => {
+    // simular loguin bem sucedido
+    // adicionar lógica de autenticação real aqui dps:
+    console.log("Login simulado com:", email, senha);
+    navigate("/dashboard"); // Redirecionar pro dashboard
 };
 
 export { HandleSetFormType, HandleGetFormType, HandleLogin };
