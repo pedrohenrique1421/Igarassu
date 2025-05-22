@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Inertia } from "@inertiajs/inertia";
 import Global from "./global";
 
 const HandleSetFormType = (type) => {
@@ -16,9 +15,6 @@ const HandleSetFormType = (type) => {
         case "solicitacao":
             Global.formType = "solicitacao";
             break;
-        case "cadSolicitante":
-            Global.formType = "cadSolicitante";
-            break;
         case "entrega":
             Global.formType = "entrega";
             break;
@@ -32,10 +28,27 @@ const HandleGetFormType = () => {
     return Global.formType;
 };
 
-const HandleLogin = (email, senha) => {
-    // Aqui entra a função de login do back,
-    // que deve retornar se o user existe e as informações dele
-    // FUNÇÃO QUEBRADA para DESENVOLVIMENTO
+const HandleLogin = (email, senha, navigate, setError) => {
+    Inertia.post(
+        "/login", // rota do backend pra lidar com o login
+        { email, senha }, // dados enviados que vão ser email e senha
+        {
+            onSuccess: (response) => {
+                // login foi bem-sucedido
+                console.log(
+                    "Login bem-sucedido! Beneficiários:",
+                    response.props.beneficiarios
+                );
+                navigate("/dashboard"); // redirecionando pro dashboard
+            },
+            onError: (errors) => {
+                // Se login falhou, exibir o erro retornado pelo back
+                setError(
+                    errors.email || "Credenciais inválidas. Tente novamente."
+                );
+            },
+        }
+    );
 };
 
 export { HandleSetFormType, HandleGetFormType, HandleLogin };
