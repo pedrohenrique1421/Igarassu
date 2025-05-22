@@ -23,6 +23,7 @@
 
 .Container img {
     height: 5.5rem;
+    cursor: pointer;
 }
 
 .Container button img {

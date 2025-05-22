@@ -49,7 +49,8 @@
 }
 
 .Container .content input[type="email"],
-.Container .content input[type="password"] {
+.Container .content input[type="password"],
+.Container .content input[type="text"] {
     background-color: var(--color-white-300);
     border: none;
     border-radius: 80px;
