@@ -7,7 +7,7 @@ import Footer from "../../components/Footer/index.jsx";
 export default function Home() {
     return (
         <>
-            <Header />
+            <Header type={"home"} />
             <Hero />
             <Info />
             <Login />

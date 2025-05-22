@@ -16,7 +16,7 @@ export default function Forms() {
     const [type, setType] = useState(String(HandleGetFormType()));
     return (
         <div>
-            <Header type={"off"} />
+            <Header type={"minimal"} />
             <Form type={formType} />
         </div>
     );

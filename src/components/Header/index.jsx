@@ -8,35 +8,71 @@ import Img2 from "../../assets/BAckArrow.svg";
 
 export default function Header({ type }) {
     const navigate = useNavigate();
-    return (
-        <div className={styles.Container}>
-            <img
-                src={Img}
-                onClick={() => {
-                    navigate("/");
-                }}
-                alt=""
-            />
-            {!type ? (
-                <NavLink to="/form" style={{ textDecoration: "none" }}>
-                    <button
-                        onClick={() => {
-                            HandleSetFormType("agendamento");
-                        }}
-                    >
-                        <h6>Agendar uma visita</h6>
-                    </button>
-                </NavLink>
-            ) : (
-                <button
-                    onClick={() => {
-                        navigate(-1);
+    console.log(type, typeof type);
+    switch (type) {
+        case "clean":
+            return (
+                <div
+                    className={styles.Container}
+                    style={{
+                        padding: "0.5rem 2.5rem 0 2.5rem",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        backgroundColor: "#c5dfd0",
                     }}
                 >
-                    <img src={Img2} alt="" />
-                    <h6>Voltar</h6>
-                </button>
-            )}
-        </div>
-    );
+                    <img
+                        src={Img}
+                        style={{ width: "3rem" }}
+                        onClick={() => {
+                            navigate("/");
+                        }}
+                        alt=""
+                    />
+                    <div className={styles.halfLine} />
+                </div>
+            );
+        case "minimal":
+            return (
+                <div className={styles.Container}>
+                    <img
+                        src={Img}
+                        onClick={() => {
+                            navigate("/");
+                        }}
+                        alt=""
+                    />
+                    <button
+                        onClick={() => {
+                            navigate(-1);
+                        }}
+                    >
+                        <img src={Img2} alt="" />
+                        <h6>Voltar</h6>
+                    </button>
+                </div>
+            );
+        case "home":
+            return (
+                <div className={styles.Container}>
+                    <img
+                        src={Img}
+                        onClick={() => {
+                            navigate("/");
+                        }}
+                        alt=""
+                    />
+
+                    <NavLink to="/form" style={{ textDecoration: "none" }}>
+                        <button
+                            onClick={() => {
+                                HandleSetFormType("agendamento");
+                            }}
+                        >
+                            <h6>Agendar uma visita</h6>
+                        </button>
+                    </NavLink>
+                </div>
+            );
+    }
 }

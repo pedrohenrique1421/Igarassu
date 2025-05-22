@@ -7,6 +7,11 @@
     padding: 1rem 5rem;
 }
 
+.Container .halfLine {
+    width: 60%;
+    border-bottom: 2px solid var(--color-green-200);
+}
+
 .Container button {
     width: fit-content;
     height: fit-content;
