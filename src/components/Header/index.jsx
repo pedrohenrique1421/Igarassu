@@ -15,7 +15,7 @@ export default function Header({ type }) {
                 <div
                     className={styles.Container}
                     style={{
-                        padding: "0 2.5rem 0 2.5rem",
+                        padding: "0",
                         flexDirection: "column",
                         alignItems: "flex-start",
                         backgroundColor: "#c5dfd0",
@@ -23,7 +23,11 @@ export default function Header({ type }) {
                 >
                     <img
                         src={Img}
-                        style={{ width: "3rem", cursor: "pointer" }}
+                        style={{
+                            width: "3rem",
+                            cursor: "pointer",
+                            marginLeft: "2.5rem",
+                        }}
                         onClick={() => {
                             navigate("/");
                         }}
