@@ -23,12 +23,38 @@ export default function List({ selected, admPermission }) {
 
 import img from "../../assets/Search.svg";
 import dataBene from "../../manager/exem.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const ListaItem = ({ cep, cpf, nis, nome }) => {
+    return (
+        <div>
+            <h3>{nome}</h3>
+            <h3>{cpf}</h3>
+            <h3>{nis}</h3>
+            <h3>{cep}</h3>
+        </div>
+    );
+};
 
 function Solicitantes() {
     const [bene, setBene] = useState([]);
 
-    const RenderizarLista = () => {};
+    const RenderizarLista = () => {
+        dataBene.forEach((e) => {
+            const id = bene.length + 1;
+            setBene([
+                ...List,
+                <ListaItem
+                    key={id}
+                    nome={e.nome}
+                    cpf={e.cpf}
+                    nis={e.nis}
+                    cep={e.cep}
+                />,
+            ]);
+        });
+    };
+
     return (
         <div className={styles.Container}>
             <div className={styles.searchBar}>
