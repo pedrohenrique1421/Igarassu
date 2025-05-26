@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
 export default function List({ selected, admPermission }) {
@@ -23,11 +23,11 @@ export default function List({ selected, admPermission }) {
 
 import img from "../../assets/Search.svg";
 import dataBene from "../../manager/exem.js";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-const ListaItem = ({ cep, cpf, nis, nome }) => {
+const ListaItem = ({ cep, cpf, nis, nome, styler }) => {
     return (
-        <div>
+        <div className={styler}>
             <h3>{nome}</h3>
             <h3>{cpf}</h3>
             <h3>{nis}</h3>
@@ -38,22 +38,38 @@ const ListaItem = ({ cep, cpf, nis, nome }) => {
 
 function Solicitantes() {
     const [bene, setBene] = useState([]);
+    const jaExecutou = useRef(false);
 
-    const RenderizarLista = () => {
-        dataBene.forEach((e) => {
-            const id = bene.length + 1;
-            setBene([
-                ...List,
+    function RenderizarLista(data) {
+        // Ordena o array pelo campo 'nome', ignorando maiúsculas/minúsculas
+        const dataOrdenada = [...data].sort((a, b) =>
+            a.nome.toLowerCase().localeCompare(b.nome.toLowerCase())
+        );
+
+        const lista = [];
+        dataOrdenada.forEach((e, index) => {
+            const id = index + 1;
+            lista.push(
                 <ListaItem
                     key={id}
                     nome={e.nome}
                     cpf={e.cpf}
                     nis={e.nis}
                     cep={e.cep}
-                />,
-            ]);
+                    styler={id % 2 === 0 ? styles.itemA : styles.itemB}
+                />
+            );
         });
-    };
+        return lista;
+    }
+
+    useEffect(() => {
+        if (jaExecutou.current) return;
+        jaExecutou.current = true;
+
+        // Função que você quer rodar só uma vez
+        setBene(RenderizarLista(dataBene));
+    }, []);
 
     return (
         <div className={styles.Container}>
@@ -63,20 +79,25 @@ function Solicitantes() {
                     name="SeachBar"
                     placeholder="Pesquisar por NIS..."
                 />
-                <img src={img} className={styles.search} alt="" />
+                <img
+                    src={img}
+                    title="Pesquisar"
+                    className={styles.search}
+                    alt=""
+                />
             </div>
             <div className={styles.lista}>
                 <div className={styles.header}>
                     <h3>Nome</h3>
                     <h3>CPF</h3>
-                    <h3>Email</h3>
-                    <h3>Idade</h3>
-                    <h3>Telefone</h3>
+                    <h3>NIS</h3>
+                    <h3>CEP</h3>
                 </div>
-                <div className={styles.itemsLista}>
-                    {/* Aqui entra os componentes dinamiocos */}
-                </div>
+                <div className={styles.itemsLista}>{bene}</div>
             </div>
+            <button title="Não implementada ainda">
+                Adicionar Beneficiario
+            </button>
         </div>
     );
 }

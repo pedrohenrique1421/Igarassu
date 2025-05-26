@@ -23,6 +23,7 @@ export default function Header({ type }) {
                 >
                     <img
                         src={Img}
+                        title="Voltar"
                         style={{
                             width: "3rem",
                             cursor: "pointer",
@@ -41,6 +42,7 @@ export default function Header({ type }) {
                 <div className={styles.Container}>
                     <img
                         src={Img}
+                        title="Voltar"
                         onClick={() => {
                             navigate("/");
                         }}
