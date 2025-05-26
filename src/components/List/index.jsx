@@ -1,4 +1,4 @@
-import { data, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
 export default function List({ selected, admPermission }) {
@@ -24,6 +24,7 @@ export default function List({ selected, admPermission }) {
 import img from "../../assets/Search.svg";
 import dataBene from "../../manager/exem.js";
 import { useEffect, useState, useRef } from "react";
+import { HandleSetFormType } from "../../manager/index.js";
 
 const ListaItem = ({ cep, cpf, nis, nome, styler }) => {
     return (
@@ -38,6 +39,7 @@ const ListaItem = ({ cep, cpf, nis, nome, styler }) => {
 
 function Solicitantes() {
     const [bene, setBene] = useState([]);
+    const navigate = useNavigate();
     const jaExecutou = useRef(false);
 
     function RenderizarLista(data) {
@@ -95,7 +97,13 @@ function Solicitantes() {
                 </div>
                 <div className={styles.itemsLista}>{bene}</div>
             </div>
-            <button title="Não implementada ainda">
+            <button
+                title="Não implementada ainda"
+                onClick={() => {
+                    HandleSetFormType("cadBeneficiario");
+                    navigate("/form");
+                }}
+            >
                 Adicionar Beneficiario
             </button>
         </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { HandleLogin } from "../../manager";
@@ -9,10 +9,51 @@ export default function Form({ type }) {
             return <Agendamento />;
         case "login":
             return <Login />;
+        case "cadBeneficiario":
+            return <CadastroBeneficiario />;
         default:
             return <ErrorPage />;
     }
 }
+
+//#region cadastro beneficiario
+
+function CadastroBeneficiario() {
+    const [ajuda, setAjuda] = useState(false);
+    return (
+        <div
+            className={styles.Container}
+            style={{ paddingTop: "2rem", paddingBottom: "2rem" }}
+        >
+            {!ajuda ? (
+                <div className={styles.content}>
+                    <h1>Cadastrar Beneficiario</h1>
+                    <div className={styles.line} />
+                    <input type="text" placeholder="Nome" />
+                    <input type="text" placeholder="CPF" />
+                    <input type="text" placeholder="NIS" />
+                    <input type="text" placeholder="CEP" />
+                    <input type="submit" value="Cadastrar" />
+                </div>
+            ) : (
+                <div className={styles.content}>
+                    <h1>Cadastrar Beneficiario</h1>
+                    <div className={styles.line} />
+                    <p>Cadastre um novo Solicitante/Beneficiario</p>
+                </div>
+            )}
+            <h2
+                onClick={() => {
+                    setAjuda(!ajuda);
+                }}
+            >
+                Precisa de ajuda?
+            </h2>
+        </div>
+    );
+}
+
+//#endregion
 
 //#region Agendamento
 function Agendamento() {

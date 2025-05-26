@@ -11,7 +11,7 @@
     width: 100% !important;
     display: flex;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .Container .searchBar input[type="text"] {
@@ -93,5 +93,4 @@
     font-weight: 600;
     font-size: 1rem;
     color: var(--color-white-300);
-    cursor: not-allowed;
 }

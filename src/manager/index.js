@@ -9,8 +9,8 @@ const HandleSetFormType = (type) => {
         case "login":
             Global.formType = "login";
             break;
-        case "cadSolicitante":
-            Global.formType = "cadSolicitante";
+        case "cadBeneficiario":
+            Global.formType = "cadBeneficiario";
             break;
         case "solicitacao":
             Global.formType = "solicitacao";
