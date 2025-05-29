@@ -13,7 +13,7 @@ export default function BenefitRequestForm() {
             tipo: "Cesta Básica",
             status: "Pendente",
             horario: "10:31",
-            data: "01/01/2025",
+            data: "01/01/2025-",
             id: "3A15SD57E",
             foto: "https://i.pravatar.cc/40"
         },
@@ -22,8 +22,44 @@ export default function BenefitRequestForm() {
             tipo: "Auxílio Fune.",
             status: "Pendente",
             horario: "16:40",
-            data: "01/01/2025",
+            data: "27/01/2025-",
             id: "65A2S1354",
+            foto: "https://i.pravatar.cc/40"
+        },
+        {
+            nome: "Mara Luiza",
+            tipo: "Cesta Básica.",
+            status: "Pendente",
+            horario: "18:37",
+            data: "14/02/2025-",
+            id: "65A2S1354",
+            foto: "https://i.pravatar.cc/40"
+        },
+        {
+            nome: "José Filipe",
+            tipo: "Cesta Básica.",
+            status: "Pendente",
+            horario: "13:21",
+            data: "15/02/2025-",
+            id: "65A2S1354",
+            foto: "https://i.pravatar.cc/40"
+        },
+        {
+            nome: "Yuri Oliveira",
+            tipo: "Auxílio Fune.",
+            status: "Pendente",
+            horario: "08:48",
+            data: "07/03/2025-",
+            id: "65A2S1354",
+            foto: "https://i.pravatar.cc/40"
+        },
+        {
+            nome: "Macio Silva",
+            tipo: "Cesta Básica.",
+            status: "Pendente",
+            horario: "11:32",
+            data: "09/03/2025-",
+            id: "65A2S1359",
             foto: "https://i.pravatar.cc/40"
         }
     ];
