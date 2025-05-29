@@ -1,0 +1,64 @@
+.pageWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+    background-color: #e7f6ef;
+}
+
+.card {
+    background-color: #a7cbbd;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.card h2 {
+    margin-bottom: 0.5rem;
+    color: #1e3d32;
+}
+
+.card hr {
+    margin: 1rem 0;
+    border: none;
+    border-top: 2px solid #5c7f73;
+}
+
+.card input,
+.card textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: #ffffff;
+    font-size: 1rem;
+}
+
+.card textarea {
+    resize: none;
+    height: 120px;
+    border-radius: 1rem;
+}
+
+.card button {
+    background-color: #3e9b72;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.ajuda {
+    margin-top: 2rem;
+    color: #1e3d32;
+    font-size: 1.1rem;
+}

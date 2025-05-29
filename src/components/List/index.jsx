@@ -5,20 +5,8 @@ import { HandleSetFormType } from "../../manager/index.js";
 import img from "../../assets/Search.svg";
 import dataBene from "../../manager/exem.js";
 
-// Formulário simples para solicitar benefício
-function BenefitRequestForm() {
-    return (
-        <div className={styles.Container}>
-            <h1>Solicitação de Benefício</h1>
-            <div className={styles.formContent}>
-                <input type="text" placeholder="Nome do Beneficiário" />
-                <input type="text" placeholder="Tipo de Benefício" />
-                <textarea placeholder="Descrição" rows={4}></textarea>
-                <input type="submit" value="Enviar Solicitação" />
-            </div>
-        </div>
-    );
-}
+// ✅ Importa o componente externo correto
+import BenefitRequestForm from "../BenefitRequestForm";
 
 // Item de lista
 const ListaItem = ({ cep, cpf, nis, nome, styler }) => {
@@ -102,7 +90,7 @@ export default function List({ selected, admPermission }) {
             return <Solicitantes />;
 
         case 2:
-            return <BenefitRequestForm />;
+            return <BenefitRequestForm />; // 
 
         case 3:
             if (admPermission) {
