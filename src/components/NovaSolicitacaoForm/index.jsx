@@ -6,6 +6,17 @@ export default function NovaSolicitacaoForm() {
 
     return (
         <div className={styles.pageWrapper}>
+            {/* TOPO COM LOGO E LINHA */}
+            <div className={styles.topo}>
+                {/*   */}
+                <img
+                    src="/src\assets\logo igarassu.svg"
+                    alt="Prefeitura de Igarassu"
+                    className={styles.logo}
+                />
+                <hr className={styles.linhaSeparadora} />
+            </div>
+
             <div className={styles.card}>
                 <h2>Solicitação</h2>
                 <hr />

@@ -5,8 +5,8 @@ import { useState } from "react";
 export default function BenefitRequestForm() {
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
+    const [selectedSolicitacao, setSelectedSolicitacao] = useState(null);
 
-    // Exemplo de dados (poderia vir de uma API ou contexto global)
     const solicitacoes = [
         {
             nome: "Evelyn Alves",
@@ -25,53 +25,97 @@ export default function BenefitRequestForm() {
             data: "01/01/2025",
             id: "65A2S1354",
             foto: "https://i.pravatar.cc/40"
-        },
-        // ...outros dados
+        }
     ];
 
     return (
         <div className={styles.pageWrapper}>
             <div className={styles.Container}>
-                <div className={styles.headerSearch}>
-                    <input
-                        type="text"
-                        placeholder="Pesquisar por Id. Solici..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </div>
+                {!selectedSolicitacao ? (
+                    <>
+                        <div className={styles.headerSearch}>
+                            <input
+                                type="text"
+                                placeholder="Pesquisar por Id. Solici..."
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                            />
+                        </div>
 
-                <div className={styles.tableArea}>
-                    <div className={styles.tableHeader}>
-                        <span>Nome</span>
-                        <span>Solicitação</span>
-                        <span>Status</span>
-                        <span>Horário</span>
-                        <span>Data</span>
-                        <span>Id. Solici.</span>
-                    </div>
-                    {solicitacoes
-                        .filter((s) => s.id.includes(search.toUpperCase()))
-                        .map((s, idx) => (
-                            <div key={idx} className={styles.tableRow}>
-                                <span className={styles.nome}>
-                                    <img src={s.foto} alt="foto" /> {s.nome}
-                                </span>
-                                <span>{s.tipo}</span>
-                                <span>{s.status}</span>
-                                <span>{s.horario}</span>
-                                <span>{s.data}</span>
-                                <span>{s.id}</span>
+                        <div className={styles.tableArea}>
+                            <div className={styles.tableHeader}>
+                                <span>Nome</span>
+                                <span>Solicitação</span>
+                                <span>Status</span>
+                                <span>Horário</span>
+                                <span>Data</span>
+                                <span>Id. Solici.</span>
                             </div>
-                        ))}
-                </div>
+                            {solicitacoes
+                                .filter((s) =>
+                                    s.id.includes(search.toUpperCase())
+                                )
+                                .map((s, idx) => (
+                                    <div key={idx} className={styles.tableRow}>
+                                        <span
+                                            className={styles.nome}
+                                            onClick={() => setSelectedSolicitacao(s)}
+                                            style={{ cursor: "pointer", color: "#2563eb" }}
+                                        >
+                                            <img src={s.foto} alt="foto" /> {s.nome}
+                                        </span>
+                                        <span>{s.tipo}</span>
+                                        <span>{s.status}</span>
+                                        <span>{s.horario}</span>
+                                        <span>{s.data}</span>
+                                        <span>{s.id}</span>
+                                    </div>
+                                ))}
+                        </div>
 
-                <button
-                    className={styles.btnNovaSolicitacao}
-                    onClick={() => navigate("/nova-solicitacao")}
-                >
-                    Fazer Nova Solicitação
-                </button>
+                        <button
+                            className={styles.btnNovaSolicitacao}
+                            onClick={() => navigate("/nova-solicitacao")}
+                        >
+                            Fazer Nova Solicitação
+                        </button>
+                    </>
+                ) : (
+                    <div className={styles.detalhesSolicitacao}>
+                        <button
+                            className={styles.voltarBtn}
+                            onClick={() => setSelectedSolicitacao(null)}
+                        >
+                            ← Voltar
+                        </button>
+                        <div className={styles.cabecalho}>
+                            <img
+                                src={selectedSolicitacao.foto}
+                                alt="foto"
+                                className={styles.fotoGrande}
+                            />
+                            <h2>{selectedSolicitacao.nome}</h2>
+                            <p><strong>Tipo:</strong> {selectedSolicitacao.tipo}</p>
+                            <p><strong>Status:</strong> {selectedSolicitacao.status}</p>
+                            <p><strong>Data:</strong> {selectedSolicitacao.data}</p>
+                            <p><strong>Horário:</strong> {selectedSolicitacao.horario}</p>
+                            <p><strong>ID:</strong> {selectedSolicitacao.id}</p>
+                        </div>
+
+                        <div className={styles.descricao}>
+                            <h3>Descrição da Solicitação</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Fusce scelerisque enim justo, dignissim aliquam metus iaculis non. 
+                                Duis blandit nibh at ex lacinia condimentum. Etiam in felis sed leo eleifend porta.
+                            </p>
+                            <p>
+                                Sed ultrices elementum nunc, at interdum augue mattis in. 
+                                Proin eget nulla cursus, mollis felis at, lacinia tellus.
+                            </p>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
