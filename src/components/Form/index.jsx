@@ -27,13 +27,15 @@ function CadastroBeneficiario() {
         >
             {!ajuda ? (
                 <div className={styles.content}>
-                    <h1>Cadastrar Beneficiario</h1>
+                    <h1>Cadastro de Solicitante</h1>
                     <div className={styles.line} />
-                    <input type="text" placeholder="Nome" />
-                    <input type="text" placeholder="CPF" />
                     <input type="text" placeholder="NIS" />
+                    <input type="text" placeholder="CPF" />
+                    <input type="text" placeholder="Nome" />
                     <input type="text" placeholder="CEP" />
-                    <input type="submit" value="Cadastrar" />
+                    <input type="text" placeholder="Endereço" />
+                    <input type="text" placeholder="Sexo" />
+                    <input type="submit" value="Fazer Solicitação" />
                 </div>
             ) : (
                 <div className={styles.content}>

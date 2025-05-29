@@ -87,7 +87,7 @@ function Solicitantes() {
                     navigate("/form");
                 }}
             >
-                Adicionar Beneficiario
+                Cadastrar novo solicitante
             </button>
         </div>
     );
