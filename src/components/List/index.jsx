@@ -1,31 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
-
-export default function List({ selected, admPermission }) {
-    const navigate = useNavigate();
-    switch (selected) {
-        case 1:
-            return <Solicitantes />;
-        case 2:
-            return;
-        case 3:
-            if (admPermission) {
-                return;
-            } else {
-                navigate("/");
-            }
-            break;
-        default:
-            navigate("/");
-            break;
-    }
-}
-
-import img from "../../assets/Search.svg";
-import dataBene from "../../manager/exem.js";
 import { useEffect, useState, useRef } from "react";
 import { HandleSetFormType } from "../../manager/index.js";
+import img from "../../assets/Search.svg";
+import dataBene from "../../manager/exem.js";
 
+// Formulário simples para solicitar benefício
+function BenefitRequestForm() {
+    return (
+        <div className={styles.Container}>
+            <h1>Solicitação de Benefício</h1>
+            <div className={styles.formContent}>
+                <input type="text" placeholder="Nome do Beneficiário" />
+                <input type="text" placeholder="Tipo de Benefício" />
+                <textarea placeholder="Descrição" rows={4}></textarea>
+                <input type="submit" value="Enviar Solicitação" />
+            </div>
+        </div>
+    );
+}
+
+// Item de lista
 const ListaItem = ({ cep, cpf, nis, nome, styler }) => {
     return (
         <div className={styler}>
@@ -37,40 +32,33 @@ const ListaItem = ({ cep, cpf, nis, nome, styler }) => {
     );
 };
 
+// Lista de solicitantes
 function Solicitantes() {
     const [bene, setBene] = useState([]);
     const navigate = useNavigate();
     const jaExecutou = useRef(false);
 
     function RenderizarLista(data) {
-        // Ordena o array pelo campo 'nome', ignorando maiúsculas/minúsculas
         const dataOrdenada = [...data].sort((a, b) =>
             a.nome.toLowerCase().localeCompare(b.nome.toLowerCase())
         );
-
-        const lista = [];
-        dataOrdenada.forEach((e, index) => {
-            const id = index + 1;
-            lista.push(
-                <ListaItem
-                    key={id}
-                    nome={e.nome}
-                    cpf={e.cpf}
-                    nis={e.nis}
-                    cep={e.cep}
-                    styler={id % 2 === 0 ? styles.itemA : styles.itemB}
-                />
-            );
-        });
-        return lista;
+        return dataOrdenada.map((e, index) => (
+            <ListaItem
+                key={index}
+                nome={e.nome}
+                cpf={e.cpf}
+                nis={e.nis}
+                cep={e.cep}
+                styler={index % 2 === 0 ? styles.itemA : styles.itemB}
+            />
+        ));
     }
 
     useEffect(() => {
-        if (jaExecutou.current) return;
-        jaExecutou.current = true;
-
-        // Função que você quer rodar só uma vez
-        setBene(RenderizarLista(dataBene));
+        if (!jaExecutou.current) {
+            jaExecutou.current = true;
+            setBene(RenderizarLista(dataBene));
+        }
     }, []);
 
     return (
@@ -81,12 +69,7 @@ function Solicitantes() {
                     name="SeachBar"
                     placeholder="Pesquisar por NIS..."
                 />
-                <img
-                    src={img}
-                    title="Pesquisar"
-                    className={styles.search}
-                    alt=""
-                />
+                <img src={img} title="Pesquisar" className={styles.search} alt="" />
             </div>
             <div className={styles.lista}>
                 <div className={styles.header}>
@@ -108,4 +91,29 @@ function Solicitantes() {
             </button>
         </div>
     );
+}
+
+// Componente principal
+export default function List({ selected, admPermission }) {
+    const navigate = useNavigate();
+
+    switch (selected) {
+        case 1:
+            return <Solicitantes />;
+
+        case 2:
+            return <BenefitRequestForm />;
+
+        case 3:
+            if (admPermission) {
+                return <div className={styles.Container}>Área restrita: Admin</div>;
+            } else {
+                navigate("/");
+                return null;
+            }
+
+        default:
+            navigate("/");
+            return null;
+    }
 }
