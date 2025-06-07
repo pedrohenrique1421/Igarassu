@@ -1,12 +1,25 @@
-# React + Vite
+# Igarassu
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+Pagina web para cadastro, solicitações, organização e acompanhamento de beneficios solicitados.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Static Badge](https://img.shields.io/badge/Vite-@6.3.5-004846?logo=vite&logoColor=FEC81E&labelColor=f1f1&color=004846&style=flat)
+![Static Badge](https://img.shields.io/badge/npm-@11.3.0-004846?logo=nodedotjs&logoColor=#5FA04E&labelColor=f1f1&color=004846&style=flat)
+![Static Badge](https://img.shields.io/badge/React-@19.1.0-004846?logo=react&logoColor=#61DAFB&labelColor=f1f1&color=004846&style=flat)
+![Static Badge](https://img.shields.io/badge/Laravel-@19.1.0-004846?logo=laravel&logoColor=#FF2D20&labelColor=f1f1&color=004846&style=flat)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Como executar o projeto
+
+1. Clone o repositório
+2. Instale as dependências
+ <pre>```npm install```</pre>
+3. Inicie o servidor com npm run dev
+ <pre>```npm run dev```</pre>
+4. Acesse o projeto em http://localhost:5173/
+
+### ⚠️ Importante:
+
+-   Talvez o link para o site seja diferente para cada pessoa, pois o projeto foi criado com o Vite, que utiliza o port 5173 por padrão, mas pode ser que ela esteja ocupada, então será utilizada outra port.
