@@ -15,9 +15,9 @@ Pagina web para cadastro, solicitações, organização e acompanhamento de bene
 
 1. Clone o repositório
 2. Instale as dependências
- <pre>```npm install```</pre>
+ <pre>npm install</pre>
 3. Inicie o servidor com npm run dev
- <pre>```npm run dev```</pre>
+ <pre>npm run dev</pre>
 4. Acesse o projeto em http://localhost:5173/
 
 ### ⚠️ Importante:
